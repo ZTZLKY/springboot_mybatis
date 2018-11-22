@@ -4,6 +4,8 @@ import com.example.demo.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper
 public interface UserMapper {
 
@@ -16,4 +18,6 @@ public interface UserMapper {
     int update(User user);
 
     int delete();
+
+    List<User> queryAll();
 }

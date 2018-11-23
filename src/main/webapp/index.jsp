@@ -6,21 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>员工列表</title>
-<%
-	pageContext.setAttribute("APP_PATH", request.getContextPath());
-%>
+<%pageContext.setAttribute("APP_PATH", request.getContextPath());%>
 <!-- web路径：
 不以/开始的相对路径，找资源，以当前资源的路径为基准，经常容易出问题。
 以/开始的相对路径，找资源，以服务器的路径为标准(http://localhost:3306)；需要加上项目名
 		http://localhost:3306/crud
  -->
-<script type="text/javascript"
-	src="${APP_PATH }/static/js/jquery-1.12.4.min.js"></script>
-<link
-	href="${APP_PATH }/static/bootstrap-3.3.7-dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<script
-	src="${APP_PATH }/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${APP_PATH }/static/js/jquery-1.12.4.min.js"></script>
+<link href="${APP_PATH }/static/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="${APP_PATH }/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 </head>
 <body>
 <!-- 员工修改的模态框 -->
@@ -61,8 +55,7 @@
 		    <label class="col-sm-2 control-label">deptName</label>
 		    <div class="col-sm-4">
 		    	<!-- 部门提交部门id即可 -->
-		      <select class="form-control" name="dId">
-		      </select>
+		      <select class="form-control" name="dId"></select>
 		    </div>
 		  </div>
 		</form>
@@ -129,8 +122,6 @@
     </div>
   </div>
 </div>
-
-
 	<!-- 搭建显示页面 -->
 	<div class="container">
 		<!-- 标题 -->
@@ -152,9 +143,7 @@
 				<table class="table table-hover" id="emps_table">
 					<thead>
 						<tr>
-							<th>
-								<input type="checkbox" id="check_all"/>
-							</th>
+							<th><input type="checkbox" id="check_all"/></th>
 							<th>员工编号</th>
 							<th>员工姓名</th>
 							<th>员工性别</th>
@@ -164,25 +153,21 @@
 						</tr>
 					</thead>
 					<tbody>
-
+                   <!--这里是展示所有员工的信息，由Ajax请求过来动态添加-->
 					</tbody>
 				</table>
 			</div>
 		</div>
-
 		<!-- 显示分页信息 -->
 		<div class="row">
 			<!--分页文字信息  -->
 			<div class="col-md-6" id="page_info_area"></div>
 			<!-- 分页条信息 -->
 			<div class="col-md-6" id="page_nav_area">
-
 			</div>
 		</div>
-
 	</div>
 	<script type="text/javascript">
-
 		var totalRecord,currentPage;
 		//1、页面加载完成以后，直接去发送ajax请求,要到分页数据
 		$(function(){
@@ -218,12 +203,6 @@
 				var genderTd = $("<td></td>").append(item.gender=='M'?"男":"女");
 				var emailTd = $("<td></td>").append(item.email);
 				var deptNameTd = $("<td></td>").append(item.department.deptName);
-				/**
-				<button class="">
-									<span class="" aria-hidden="true"></span>
-									编辑
-								</button>
-				*/
 				var editBtn = $("<button></button>").addClass("btn btn-primary btn-sm edit_btn")
 								.append($("<span></span>").addClass("glyphicon glyphicon-pencil")).append("编辑");
 				//为编辑按钮添加一个自定义的属性，来表示当前员工id
